@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.1.6.2 (Linux)">
+	<META NAME="AUTHOR" CONTENT="Katya">
+	<META NAME="CREATED" CONTENT="20170413;62400000000000">
+	<META NAME="CHANGEDBY" CONTENT="Katya">
+	<META NAME="CHANGED" CONTENT="20170413;74800000000000">
+	<META NAME="AppVersion" CONTENT="16.0000">
+	<META NAME="DocSecurity" CONTENT="0">
+	<META NAME="HyperlinksChanged" CONTENT="false">
+	<META NAME="LinksUpToDate" CONTENT="false">
+	<META NAME="ScaleCrop" CONTENT="false">
+	<META NAME="ShareDoc" CONTENT="false">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin-left: 1.18in; margin-right: 0.59in; margin-top: 0.79in; margin-bottom: 0.79in }
+		P { margin-bottom: 0.08in; direction: ltr; widows: 2; orphans: 2 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="ru-RU" DIR="LTR">
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Работа с </FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">GIT</SPAN></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">GIT</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>
+– это мощная и сложная распределенная
+система контроля версий (СКВ). Понимание
+всех возможностей </FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">git</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>
+открывает для разработчиков новые
+горизонты в управлении исходным кодом.
+Основные ее преимущества –распределенность
+и использование бинарных дифов, что
+упрощает работу с системой нескольких
+пользователей одновременно, и упрощает
+хранение бинарных файлов, ресурсов.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Основные
+понятия Git</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">Commit</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>(коммит)
+– сохранение состояния своего проекта
+в репозитарии Git. Каждый раз, когда вы
+делаете коммит, то есть сохраняете
+состояние своего проекта в Git’е, система
+запоминает как выглядит каждый файл в
+этот момент, и сохраняет ссылку на этот
+снимок. Для увеличения эффективности,
+если файлы не были изменены, Git не
+запоминает эти файлы вновь, а только
+создаёт ссылку на предыдущую версию
+идентичного файла, который уже сохранён.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Так как вся
+история проекта хранится прямо на вашем
+локальном диске, большинство операций
+кажутся чуть ли не мгновенными.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Для примера,
+чтобы посмотреть историю проекта, Git’у
+не нужно соединяться с сервером, для её
+получения и отображения – система
+просто считывает данные напрямую из
+локальной базы данных. Это означает,
+что вы увидите историю проекта практически
+моментально. Если вам необходимо
+посмотреть изменения, сделанные между
+текущей версией файла и версией, созданной
+месяц назад, Git может найти файл месячной
+давности и локально вычислить изменения,
+вместо того, чтобы запрашивать удалённый
+сервер и выполнить эту операцию, либо
+вместо получения старой версии файла
+с сервера и выполнения операции локально.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>В Git’е для
+всего вычисляется</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>хеш-сумма,
+и только потом происходит сохранение,
+в дальнейшем, обращение к сохранённым
+объектам происходит по этой хеш-сумме.
+Это значит, что невозможно изменить
+содержимое файла или директории так,
+чтобы Git не узнал об этом. Данная
+функциональность встроена в Git на низком
+уровне и является неотъемлемой частью
+его философии. Вы не потеряете информацию
+во время её передачи и не получите
+повреждённый файл без ведома Git.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><BR>Git только
+добавляет данные</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><BR>Когда вы
+производите какие-либо действия в Git,
+практически все из них только добавляют
+новые данные в базу Git. Очень сложно
+заставить систему удалить данные, либо
+сделать что-то, что нельзя впоследствии
+отменить.</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Как
+и в любой другой СКВ, вы можете потерять
+или испортить свои изменения, пока они
+не закоммичены, но&nbsp;после того, как вы
+закоммитите снимок в Git, будет очень
+сложно что-либо потерять, особенно, если
+вы регулярно синхронизируете свою базу
+с другим репозиторием.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Всё это
+превращает использование Git в одно
+удовольствие, потому что мы знаем, что
+можем экспериментировать, не боясь
+серьёзных проблем.<BR>Три состояния</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><BR>Это самая
+важная вещь, которую нужно запомнить о
+</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">Git</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>,
+если вы хотите, чтобы остаток процесса
+обучения прошёл гладко.<BR><BR></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">Git</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>
+имеет </FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><U>три
+основных состояния</U></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>,
+в которых могут находиться ваши файлы:</FONT></FONT></P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>зафиксированном&nbsp;(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">committed</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>),</FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>изменённом&nbsp;(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">modified</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)</FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>подготовленном&nbsp;(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">staged</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>).</FONT></FONT></P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Зафиксированный</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>
+(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US"><SPAN STYLE="font-weight: normal">committed</SPAN></SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)
+значит, что&nbsp;файл уже сохранён в вашей
+локальной базе.&nbsp;</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>К изменённым
+(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">modified</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)
+относятся файлы,&nbsp;которые поменялись,
+но ещё не были зафиксированы.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Подготовленные
+файлы (</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">staged</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)
+– это изменённые файлы, отмеченные для
+включения в следующий коммит.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><BR></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><U>Три
+основные секции проекта</U></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>
+</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">Git</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>:</FONT></FONT></P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">Git
+	</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>директория</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">&nbsp;(</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">Git
+	directory – repository .git</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">),</SPAN></FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>рабочая
+	директория&nbsp;(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">working
+	directory</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)</FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4>область
+	подготовленных файлов&nbsp;(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">staging</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>
+	</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">area</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>).</FONT></FONT></P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Git директория
+(.git)</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;–&nbsp;это
+то место где Git хранит метаданные и базу
+объектов вашего проекта. Это самая
+важная часть Git, и это та часть, которая
+копируется при клонировании репозитория
+с другого компьютера.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Рабочая
+директория</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;является
+снимком версии проекта.&nbsp;Файлы
+распаковываются&nbsp;из сжатой базы данных
+в&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>Git
+директории</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;и
+располагаются на диске,&nbsp;для того,
+чтобы их можно было изменять и использовать.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Область
+подготовленных файлов</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;–
+это файл, располагающийся в вашей Git
+директории, в нём содержится информация
+о том, какие изменения попадут в следующий
+коммит.&nbsp;Эту область ещё называют
+«</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>индекс</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>»,
+однако называть её&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>stage</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;область
+также общепринято.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Основы Git</B></FONT></FONT></P>
+<OL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Создание
+	Git-репозитория</B></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Для создания
+Git-репозитория вы можете использовать
+два основных подхода. Во-первых, импорт
+в Git уже существующего проекта или
+директории. Во-вторых, клонирование
+существующего репозитория с другого
+сервера.</FONT></FONT></P>
+<OL START=2>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Запись
+	изменений в репозиторий</B></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Итак, у вас
+имеется настоящий Git-репозиторий и
+рабочая копия файлов для некоторого
+проекта. Вам нужно делать некоторые
+изменения и фиксировать «снимки»
+состояния (</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">snapshots</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)
+этих изменений в вашем репозитории
+каждый раз, когда проект достигает
+состояния, которое вам хотелось бы
+сохранить.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Запомните,
+каждый файл в вашем рабочем каталоге
+может находиться в одном из двух
+состояний:&nbsp;под версионным
+контролем&nbsp;(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>отслеживаемые</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)
+и&nbsp;нет&nbsp;(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>неотслеживаемые</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>).</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Отслеживаемые
+файлы</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;–
+это те файлы, которые были в последнем
+слепке состояния проекта (</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">snapshot</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>);
+они могут быть неизменёнными, изменёнными
+или подготовленными к коммиту (</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">staged</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>).</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Неотслеживаемые
+файлы</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;–
+это всё остальное, любые файлы в вашем
+рабочем каталоге, которые не входили в
+ваш последний слепок состояния и не
+подготовлены к коммиту.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Когда вы
+впервые&nbsp;клонируете&nbsp;репозиторий,
+все файлы будут отслеживаемыми и
+неизменёнными, потому что вы только
+взяли их из хранилища (</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">checked
+them out</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)
+и ничего пока не редактировали.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Как только
+вы отредактируете файлы, Git будет
+рассматривать их как изменённые, т.к.
+вы изменили их с момента последнего
+коммита. Вы индексируете (</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">stage</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)
+эти изменения и затем фиксируете все
+индексированные изменения, а затем цикл
+повторяется.</FONT></FONT></P>
+<OL START=3>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Просмотр
+	истории коммитов</B></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>После того
+как вы создадите несколько коммитов,
+или же склонируете репозиторий с уже
+существующей историей коммитов, вы,
+вероятно, захотите оглянуться назад и
+узнать, что же происходило с этим
+репозиторием. Наиболее простой и в то
+же время мощный инструмент для этого —
+команда&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>git
+log</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>.</FONT></FONT></P>
+<OL START=4>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Отмена
+	изменений</B></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>На любой
+стадии может возникнуть необходимость
+что-либо отменить. Будьте осторожны,
+ибо не всегда можно отменить сами отмены.
+Это одно из немногих мест в Git'е, где вы
+можете потерять свою работу если сделаете
+что-то неправильно.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Изменение
+последнего коммита</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Одна из
+типичных отмен происходит тогда, когда
+вы делаете коммит слишком рано, забыв
+добавить какие-то файлы, или напутали
+с комментарием к коммиту.</FONT></FONT></P>
+<OL START=5>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Работа
+	с удалёнными репозиториями</B></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Чтобы иметь
+возможность совместной работы над
+каким-либо Git-проектом, необходимо знать,
+как управлять удалёнными репозиториями.
+Удалённые репозитории — это модификации
+проекта, которые хранятся в интернете
+или ещё где-то в сети. Их может быть
+несколько, каждый из которых, как правило,
+доступен для вас либо только на чтение,
+либо на чтение и запись. Совместная
+работа включает в себя управление
+удалёнными репозиториями и&nbsp;помещение
+(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>push</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)&nbsp;и&nbsp;получение
+(</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>pull</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)&nbsp;данных
+в/из них тогда, когда нужно обменяться
+результатами работы. Управление
+удалёнными репозиториями включает
+умение добавлять удалённые репозитории,
+удалять те из них, которые больше не
+действуют, умение управлять различными
+удалёнными ветками и определять их как
+отслеживаемые (</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><SPAN LANG="en-US">tracked</SPAN></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>)
+или нет и прочее. </FONT></FONT>
+</P>
+<OL START=6>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Работа
+	с метками</B></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Как и
+большинство СКВ, Git имеет возможность
+помечать (tag) определённые моменты в
+истории как важные. Как правило, этот
+функционал используется для отметки
+моментов выпуска версий (v1.0, и т.п.).</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Git использует
+два основных типа меток: легковесные и
+аннотированные. </FONT></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Легковесная
+метка – это что-то весьма похожее на
+ветку, которая не меняется – это просто
+указатель на определённый коммит. </FONT></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>А вот
+аннотированные метки хранятся в базе
+данных Git'а как полноценные объекты. Они
+имеют контрольную сумму, содержат имя
+поставившего метку, e-mail и дату, имеют
+комментарий и могут быть подписаны и
+проверены с помощью GNU Privacy Guard (GPG). Обычно
+рекомендуется создавать аннотированные
+метки, чтобы иметь всю перечисленную
+информацию; но если вы хотите сделать
+временную метку или по какой-то причине
+не хотите сохранять остальную информацию,
+то для этого годятся и легковесные
+метки.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Легковесная
+метка – это ещё один способ отметки
+коммитов. В сущности, это контрольная
+сумма коммита, сохранённая в файл –
+больше никакой информации не хранится.</FONT></FONT></P>
+<OL START=7>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Ветвление
+	в Git </B></FONT></FONT>
+	</P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Используя
+ветвление, Вы отклоняетесь от основной
+линии разработки и продолжаете работу
+независимо от нее, не вмешиваясь в
+основную линию.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Чтобы на
+самом деле разобраться в том, как Git
+работает с ветками, мы должны сделать
+шаг назад и рассмотреть, как Git хранит
+свои данные.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Git хранит
+данные&nbsp;не как последовательность
+изменений или дельт, а&nbsp;как
+последовательность снимков состояния
+(snapshot).</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Когда вы
+создаёте коммит в Git'е, Git записывает в
+базу объект-коммит, который содержит
+указатель на снимок состояния, записанный
+ранее в индекс, метаданные автора и
+комментария и ноль и более указателей
+на коммиты, являющиеся прямыми предками
+этого коммита: ноль предков для первого
+коммита, один — для обычного коммита и
+несколько — для коммита, полученного
+в результате слияния двух или более
+веток.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Когда вы
+создаёте коммит, выполняя&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>git
+commit</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>,
+Git вычисляет контрольную сумму каждого
+подкаталога и сохраняет эти объекты-деревья
+в Git-репозиторий. Затем Git создаёт объект
+для коммита, в котором есть метаданные
+и указатель на объект-дерево для корня
+проекта. Таким образом, Git сможет
+воссоздать текущее состояние, когда
+будет нужно.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Ветка в Git'е
+— это просто легковесный подвижный
+указатель на один из этих коммитов.&nbsp;Ветка
+по умолчанию в Git'е называется&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>master</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>.
+Когда вы создаёте коммиты на начальном
+этапе, вам дана ветка&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>master</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>,
+указывающая на последний сделанный
+коммит. При каждом новом коммите она
+сдвигается вперёд автоматически.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Ветка&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>master</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;в
+Git это не какая-то специальная ветка.
+Она точно такая же, как и все остальные
+ветки. Единственная причина, по которой
+она существует в каждом репозитарии,
+это то, что&nbsp;по умолчанию&nbsp;команда&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>git
+init</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;создает
+ее, и большинство людей это устраивает
+и они не меняют ее название.</FONT></FONT></P>
+<OL START=8>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Ветвление
+	в Git - Перемещение</B></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>В Git'е есть
+два способа включить изменения из одной
+ветки в другую:&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>merge</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;(слияние)
+и&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>rebase</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>&nbsp;(перемещение).
+</FONT></FONT>
+</P>
+<OL START=9>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0in; line-height: 100%"><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Слияние
+	веток</B></FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%"><A NAME="_GoBack"></A>
+<FONT FACE="Times New Roman, serif"><FONT SIZE=4>Наиболее
+простое решение для объединения веток
+– команда&nbsp;</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>merge</B></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>.
+Эта команда&nbsp;выполняет трёхходовое
+слияние между двумя последними снимками
+состояний из веток и последним общим
+предком этих двух веток (</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>C2</B></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=4>),
+создавая новый снимок состояния (и
+коммит).</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-bottom: 0in; line-height: 100%">
+<BR>
+</P>
+</BODY>
+</HTML>
